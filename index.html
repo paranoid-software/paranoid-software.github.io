@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<head></head>
+<body data-controller-name="BlogPlugster">
+    <div data-outlet-id="entryList" 
+        data-child-templates='["client-stack/modules/home/blog-list-row-template.html"]'></div>
+    <script type="application/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+    <script type="module" src="client-stack/modules/home/blog.js"></script>
 </body>
 </html>
