@@ -1,4 +1,4 @@
-import Plugster from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.3/es6/dist/plugster.min.js';
+import Plugster from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.4/es6/dist/plugster.min.js';
 import TopicsRepository from '../../repositories/topics.js';
 
 class NavigationBarPlugster extends Plugster {
@@ -10,24 +10,22 @@ class NavigationBarPlugster extends Plugster {
     afterInit() {
         let self = this;
         let repo = new TopicsRepository();
-        repo.getAll().then(function(db) {
-            db.forEach(item => {
-                self.addItem(item);
+        repo.getAll().then(function(topics) {
+            topics.forEach(topic => {
+                self.addTopic(topic);
             });
-            self.notifyTopicSelection(db[0].id);
+            self.notifyTopicSelection(topics[0].id);
         });
     }
 
-    addItem(item) {
+    addTopic(topic) {
         let self = this;
-        let itemOutlets = self._.menu.buildListItem(0, item.id, item, {
+        let itemOutlets = self._.menu.buildListItem(0, topic.id, topic, {
             label: {}
-        });
-        itemOutlets.root.click(function() {
-            let key = this.dataset['key'];
+        }, function(key, jsonData) {
             self.notifyTopicSelection(key);
         });
-        itemOutlets.label.text(item.name);
+        itemOutlets.label.text(topic.name);
     }
 
     notifyTopicSelection(id) {
