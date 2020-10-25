@@ -9,8 +9,8 @@
     {
         "order": 2,
         "id": "paranoid",
-        "name": "Paranoid Software",
-        "description": "Company general information blog.",
+        "name": "The Company",
+        "description": "Company coding blog.",
         "db": "paranoid.json"
     }
 ]

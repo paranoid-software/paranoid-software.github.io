@@ -2,10 +2,11 @@ export default class ArticlesRepository {
     constructor() {        
     }
 
-    getAll = function (topic) {
+    getAll = function () {
         return $.get({
-            url: `/db/${topic}.json`,
+            url: `/db/articles.json`,
             cache: false
         });
     }
+
 }
