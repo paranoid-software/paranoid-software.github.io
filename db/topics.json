@@ -1,0 +1,16 @@
+[
+    {
+        "order": 1,
+        "id": "plugster",
+        "name": "Plugster",
+        "description": "jQuery wrapper.",
+        "db": "plugster.json"
+    },
+    {
+        "order": 2,
+        "id": "paranoid",
+        "name": "Paranoid Software",
+        "description": "Company general information blog.",
+        "db": "paranoid.json"
+    }
+]
