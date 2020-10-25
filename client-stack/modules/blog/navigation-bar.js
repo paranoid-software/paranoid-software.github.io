@@ -13,8 +13,7 @@ class NavigationBarPlugster extends Plugster {
         repo.getAll().then(function(topics) {
             topics.forEach(topic => {
                 self.addTopic(topic);
-            });
-            self.notifyTopicSelection(topics[0].id);
+            });            
         });
     }
 

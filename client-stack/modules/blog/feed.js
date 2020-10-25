@@ -8,33 +8,44 @@ class FeedPlugster extends Plugster {
     }
 
     afterInit() {
-    }
-
-    handleTopicSelection(data) {        
         let self = this;
-        if(self.currentTopicId && self.currentTopicId == data.id) return;
-        self.currentTopicId = data.id;
-        self._.articlesList.clear();
         let repo = new ArticlesRepository();
-        repo.getAll(data.id).then(function(db) {
-            db.sort((a, b) => (a.id > b.id) ? -1 : 1);
-            db.forEach(item => {
-                self.renderBlogEntry(data.id, item);
+        repo.getAll().then(function(articles) {
+            articles.sort((a, b) => (a.id > b.id) ? -1 : 1).forEach(article => {
+                self.renderBlogEntry(article);
             });
         });
     }
 
-    renderBlogEntry(dbId, item) {
+    handleTopicSelection(topic) {   
+        let self = this;
+        if(self.currentTopicId && self.currentTopicId == topic.id) return;
+        self.currentTopicId = topic.id;
+        self._.articlesList.clear();
+        let repo = new ArticlesRepository();
+        repo.getAll().then(function(articles) {
+            articles
+            .sort((a, b) => (a.id > b.id) ? -1 : 1).
+            filter(article => article.topic === topic.id)
+            .forEach(article => {
+                self.renderBlogEntry(article);
+            });
+        });
+    }
+
+    renderBlogEntry(item) {
         let self = this;        
         let itemOutlets = self._.articlesList.buildListItem(0, item.id, item, {
-            content: {}
-        }, function(key, data) {
-            console.log([key, data]);
+            content: {},
+            authorLabel: {},
+            dateLabel: {}
         });
         if(!itemOutlets) return null;
-        itemOutlets.content.load(`/db/${dbId}/${item.fileName}`, function(content) {
+        itemOutlets.content.load(`/db/${item.topic}/${item.fileName}`, function(content) {
             this.innerHTML = new showdown.Converter().makeHtml(content);
         });
+        itemOutlets.authorLabel.text(item.author);
+        itemOutlets.dateLabel.text(item.date);
     }
 
 }
