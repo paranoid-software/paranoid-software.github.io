@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head></head>
-<body data-controller-name="BlogPlugster">
-    <div data-outlet-id="entryList" 
-        data-child-templates='["client-stack/modules/home/blog-list-row-template.html"]'></div>
+<head>
+
+</head>
+<body>
+    <div data-controller-name="NavigationBarPlugster">
+        <div data-outlet-id="menu"
+            data-child-templates='["client-stack/modules/blog/navigation-bar.list-item-template.html"]'></div>
+    </div>
+    <div data-controller-name="FeedPlugster" 
+        data-on-navigationbarplugster-topicselected="handleTopicSelection">
+        <div data-outlet-id="articlesList" 
+            data-child-templates='["client-stack/modules/blog/feed.list-item-template.html"]'></div>
+    </div>
     <script type="application/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
-    <script type="module" src="client-stack/modules/home/blog.js"></script>
+    <script type="module" src="client-stack/modules/blog/navigation-bar.js"></script>
+    <script type="module" src="client-stack/modules/blog/feed.js"></script>
 </body>
 </html>
