@@ -11,7 +11,7 @@ class NavigationBarPlugster extends Plugster {
         let self = this;
         let repo = new TopicsRepository();
         repo.getAll().then(function(topics) {
-            topics.forEach(topic => {
+            topics.sort((a, b) => (a.order < b.order) ? -1 : 1).forEach(topic => {
                 self.addTopic(topic);
             });            
         });

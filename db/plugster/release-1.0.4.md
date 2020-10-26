@@ -31,8 +31,8 @@ Then on the controller code we can act upon the event dispatch by implementing t
         let repo = new ArticlesRepository();
         repo.getAll().then(function(articles) {
             articles
-            .sort((a, b) => (a.id > b.id) ? -1 : 1).
-            filter(article => article.topic === topic.id)
+            .sort((a, b) => (Date.parse(a.date) > Date.parse(b.date)) ? -1 : 1)
+            .filter(article => article.topic === topic.id)
             .forEach(article => {
                 self.renderBlogEntry(article);
             });
