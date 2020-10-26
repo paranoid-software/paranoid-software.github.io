@@ -2,7 +2,7 @@ export default class TopicsRepository {
     constructor() {        
     }
 
-    getAll = function () {
+    getAll() {
         return $.get({
             url: '/db/topics.json',
             cache: false
