@@ -43,7 +43,7 @@ class FeedPlugster extends Plugster {
         if(!itemOutlets) return null;
         itemOutlets.content.load(`/db/${item.topic}/${item.fileName}`, function(content) {
             this.innerHTML = new showdown.Converter().makeHtml(content);
-            this.querySelectorAll('code').forEach(function(a, b) {
+            this.querySelectorAll('code').forEach(function(a) {
                 hljs.highlightBlock(a);
             });
         });        

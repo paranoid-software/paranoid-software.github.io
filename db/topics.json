@@ -3,14 +3,12 @@
         "order": 1,
         "id": "plugster",
         "name": "Plugster",
-        "description": "jQuery wrapper.",
-        "db": "plugster.json"
+        "description": "jQuery wrapper blog."
     },
     {
         "order": 2,
         "id": "paranoid",
         "name": "The Company",
-        "description": "Company coding blog.",
-        "db": "paranoid.json"
+        "description": "Company coding blog."
     }
 ]
