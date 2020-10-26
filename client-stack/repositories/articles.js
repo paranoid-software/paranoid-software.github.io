@@ -2,7 +2,7 @@ export default class ArticlesRepository {
     constructor() {        
     }
 
-    getAll = function () {
+    getAll() {
         return $.get({
             url: `/db/articles.json`,
             cache: false
