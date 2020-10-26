@@ -1,5 +1,5 @@
 body {
-  font-size: 20px;
+  font-size: 17px;
   color: #212529;
   font-family: "Lora", "Times New Roman", serif;
 }
@@ -14,7 +14,7 @@ p a {
 }
 
 h1 {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 h1,
@@ -34,28 +34,6 @@ a {
 a:focus,
 a:hover {
   color: #0085a1;
-}
-
-blockquote {
-  font-style: italic;
-  color: #868e96;
-}
-
-.section-heading {
-  font-size: 36px;
-  font-weight: 700;
-  margin-top: 60px;
-}
-
-.caption {
-  font-size: 14px;
-  font-style: italic;
-  display: block;
-  margin: 0;
-  padding: 10px;
-  text-align: center;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
 }
 
 ::-moz-selection {
@@ -175,17 +153,8 @@ code {
   }
 }
 
-.post-preview > a {
-  color: #212529;
-}
-
-.post-preview > a:focus,
-.post-preview > a:hover {
-  text-decoration: none;
-  color: #0085a1;
-}
-
 .post-preview h1 {
+  color: #212529;
   margin-top: 30px;
   margin-bottom: 10px;
 }
@@ -195,6 +164,7 @@ code {
   font-style: italic;
   margin-top: 0;
   color: #868e96;
+  margin-bottom: 50px;
 }
 
 .post-preview > .post-meta > a {

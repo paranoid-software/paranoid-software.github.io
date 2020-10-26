@@ -4,4 +4,4 @@ We are happy to release our very first Plugster version, it has been quite a jou
 
 We invite you to use the module, give us your feedback and of course enjoy it !!.
 
-PD: This blog is a living sample made with [plugster](https://github.com/paranoid-software/plugster), [jQuery](https://github.com/jquery/jquery), [showdownjs](http://showdownjs.com) and Bootstrap.
+PD: This blog is a living sample made with [plugster](https://github.com/paranoid-software/plugster), [jQuery](https://github.com/jquery/jquery), [showdownjs](http://showdownjs.com), [highlight.js](https://highlightjs.org/) and [Bootstrap](https://getbootstrap.com/).

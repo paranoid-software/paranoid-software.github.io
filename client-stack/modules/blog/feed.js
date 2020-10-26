@@ -11,10 +11,10 @@ class FeedPlugster extends Plugster {
         let self = this;
         let repo = new ArticlesRepository();
         repo.getAll().then(function(articles) {
-            articles.sort((a, b) => (a.id > b.id) ? -1 : 1).forEach(article => {
+            articles.sort((a, b) => (Date.parse(a.date) > Date.parse(b.date)) ? -1 : 1).forEach(article => {
                 self.renderBlogEntry(article);
             });
-        });
+        });        
     }
 
     handleTopicSelection(topic) {   
@@ -25,8 +25,8 @@ class FeedPlugster extends Plugster {
         let repo = new ArticlesRepository();
         repo.getAll().then(function(articles) {
             articles
-            .sort((a, b) => (a.id > b.id) ? -1 : 1).
-            filter(article => article.topic === topic.id)
+            .sort((a, b) => (Date.parse(a.date) > Date.parse(b.date)) ? -1 : 1)
+            .filter(article => article.topic === topic.id)
             .forEach(article => {
                 self.renderBlogEntry(article);
             });
@@ -43,9 +43,13 @@ class FeedPlugster extends Plugster {
         if(!itemOutlets) return null;
         itemOutlets.content.load(`/db/${item.topic}/${item.fileName}`, function(content) {
             this.innerHTML = new showdown.Converter().makeHtml(content);
-        });
+            this.querySelectorAll('code').forEach(function(a, b) {
+                hljs.highlightBlock(a);
+            });
+        });        
+        
         itemOutlets.authorLabel.text(item.author);
-        itemOutlets.dateLabel.text(item.date);
+        itemOutlets.dateLabel.text(Date.parse(item.date).toString("MMMM dd, 2020 - HH:mm.ss"));
     }
 
 }
