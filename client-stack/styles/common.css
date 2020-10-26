@@ -65,6 +65,7 @@ img::-moz-selection {
 
 code {
   font-size: 13px !important;
+  border-radius: 7px;
 }
 
 #mainNav {
