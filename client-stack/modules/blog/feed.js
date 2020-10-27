@@ -1,4 +1,4 @@
-import Plugster from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.4/es6/dist/plugster.min.js';
+import Plugster from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.5/es6/dist/plugster.min.js';
 import ArticlesRepository from '../../repositories/articles.js';
 
 class FeedPlugster extends Plugster {
