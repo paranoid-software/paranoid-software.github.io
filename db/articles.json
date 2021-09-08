@@ -22,5 +22,13 @@
         "date": "10/22/2020 15:01",
         "author": "Pablo Pinargote",
         "fileName": "release-1.0.4.md"
+    },
+    {
+        "id": 4,
+        "title": "A lot to cover",
+        "topic": "plugster",
+        "date": "09/08/2021 09:22",
+        "author": "Pablo Pinargote",
+        "fileName": "release-1.0.12.md"
     }
 ]
