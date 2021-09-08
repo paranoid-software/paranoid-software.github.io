@@ -1,10 +1,12 @@
-import Plugster from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.5/es6/dist/plugster.min.js';
 import ArticlesRepository from '../../repositories/articles.js';
+import {Plugster} from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.12/dist/plugster.min.js';
+import jsonpath from '../../deps/jsonpath.module.js';
 
 class FeedPlugster extends Plugster {
     
     constructor(outlets) {
         super(outlets);
+        window.hljs = window.hljs || undefined;
     }
 
     afterInit() {
@@ -19,14 +21,14 @@ class FeedPlugster extends Plugster {
 
     handleTopicSelection(topic) {   
         let self = this;
-        if(self.currentTopicId && self.currentTopicId == topic.id) return;
+        if(self.currentTopicId && self.currentTopicId === topic.id) return;
         self.currentTopicId = topic.id;
         self._.articlesList.clear();
         let repo = new ArticlesRepository();
         repo.getAll().then(function(articles) {
             articles
             .sort((a, b) => (Date.parse(a.date) > Date.parse(b.date)) ? -1 : 1)
-            .filter(article => article.topic === topic.id)
+            .filter(article => jsonpath.value(article, '$.topic') === topic.id)
             .forEach(article => {
                 self.renderBlogEntry(article);
             });
@@ -41,19 +43,21 @@ class FeedPlugster extends Plugster {
             dateLabel: {}
         });
         if(!itemOutlets) return null;
-        itemOutlets.content.load(`/db/${item.topic}/${item.fileName}`, function(content) {
-            this.innerHTML = new showdown.Converter().makeHtml(content);
+        itemOutlets.content.load(`/db/${jsonpath.value(item, '$.topic')}/${jsonpath.value(item, '$.fileName')}`, function(content) {
+            this.innerHTML = new window.showdown.Converter().makeHtml(content);
             this.querySelectorAll('code').forEach(function(a) {
-                hljs.highlightBlock(a);
+                window.hljs.highlightElement(a);
             });
         });        
         
-        itemOutlets.authorLabel.text(item.author);
+        itemOutlets.authorLabel.text(jsonpath.value(item, '$.author'));
         itemOutlets.dateLabel.text(Date.parse(item.date).toString("MMMM dd, 2020 - HH:mm.ss"));
     }
 
 }
 
-export default new FeedPlugster({    
+let feedPlugster = await new FeedPlugster({
     articlesList: {}
-});
+}).init();
+
+Plugster.plug(feedPlugster);

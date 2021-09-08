@@ -1,5 +1,5 @@
-import Plugster from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.5/es6/dist/plugster.min.js';
 import TopicsRepository from '../../repositories/topics.js';
+import {Plugster} from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.12/dist/plugster.min.js';
 
 class NavigationBarPlugster extends Plugster {
 
@@ -37,6 +37,8 @@ class NavigationBarPlugster extends Plugster {
 
 }
 
-export default new NavigationBarPlugster({    
+let navigationBarPlugster = await new NavigationBarPlugster({
     menu: {}
-});
+}).init();
+
+Plugster.plug(navigationBarPlugster);
