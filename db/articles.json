@@ -38,5 +38,13 @@
         "date": "05/20/2026 15:00",
         "author": "Pablo Pinargote",
         "fileName": "release-1.0.14.md"
+    },
+    {
+        "id": 6,
+        "title": "Looky Studio is out of beta",
+        "topic": "paranoid",
+        "date": "05/20/2026 18:30",
+        "author": "Pablo Pinargote",
+        "fileName": "looky-studio-out-of-beta.md"
     }
 ]
