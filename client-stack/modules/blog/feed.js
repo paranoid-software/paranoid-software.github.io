@@ -1,5 +1,5 @@
 import ArticlesRepository from '../../repositories/articles.js';
-import {Plugster} from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.12/dist/plugster.min.js';
+import {Plugster} from 'https://cdn.jsdelivr.net/gh/paranoid-software/plugster@1.0.14/dist/plugster.min.js';
 import jsonpath from '../../deps/jsonpath.module.js';
 
 class FeedPlugster extends Plugster {
