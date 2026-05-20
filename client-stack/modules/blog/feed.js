@@ -51,7 +51,7 @@ class FeedPlugster extends Plugster {
         });        
         
         itemOutlets.authorLabel.text(jsonpath.value(item, '$.author'));
-        itemOutlets.dateLabel.text(Date.parse(item.date).toString("MMMM dd, 2020 - HH:mm.ss"));
+        itemOutlets.dateLabel.text(Date.parse(item.date).toString("MMMM dd, yyyy - HH:mm:ss"));
     }
 
 }
