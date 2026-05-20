@@ -41,7 +41,7 @@ class FeedPlugster extends Plugster {
             content: {},
             authorLabel: {},
             dateLabel: {}
-        });
+        }, self._.articlesList.count());
         if(!itemOutlets) return null;
         itemOutlets.content.load(`/db/${jsonpath.value(item, '$.topic')}/${jsonpath.value(item, '$.fileName')}`, function(content) {
             this.innerHTML = new window.showdown.Converter().makeHtml(content);
