@@ -21,7 +21,7 @@ class NavigationBarPlugster extends Plugster {
         let self = this;
         let itemOutlets = self._.menu.buildListItem(0, topic.id, topic, {
             label: {}
-        }, function(key, jsonData) {
+        }, 0, function(key, jsonData) {
             self.notifyTopicSelection(key);
         });
         itemOutlets.label.text(topic.name);
